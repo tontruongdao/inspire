@@ -1,5 +1,7 @@
 import Head from "next/head";
-import styles from "../styles/Layout.module.scss"
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
+import styles from "./Layout.module.scss";
 
 interface ILayoutProps {
   title: string;
@@ -19,9 +21,13 @@ const Layout = (props: ILayoutProps) => {
         <meta name='keywords' content={keywords} />
       </Head>
 
+      <Header />
+
       <div className={styles.container}>
         {children}
       </div>
+
+      <Footer />
     </div>
   )
 }
