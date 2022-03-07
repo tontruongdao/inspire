@@ -1,6 +1,8 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import Showcase from "@components/Showcase/Showcase";
 import styles from "./Layout.module.scss";
 
 interface ILayoutProps {
@@ -12,6 +14,7 @@ interface ILayoutProps {
 
 const Layout = (props: ILayoutProps) => {
   const { title, keywords, description, children } = props;
+  const router = useRouter()
 
   return (
     <div>
@@ -22,6 +25,8 @@ const Layout = (props: ILayoutProps) => {
       </Head>
 
       <Header />
+
+      {router.pathname === '/' && <Showcase />}
 
       <div className={styles.container}>
         {children}
