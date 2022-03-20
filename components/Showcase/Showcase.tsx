@@ -1,4 +1,4 @@
-import styles from '/Showcase.module.scss'
+import styles from './Showcase.module.scss'
 
 const Showcase = () => {
   return (

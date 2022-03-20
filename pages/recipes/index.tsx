@@ -1,36 +1,27 @@
 import type { NextPage, GetStaticProps } from 'next'
-import Link from 'next/link'
 import { API_URL } from '@config/index'
 import RecipeItem, { IRecipe } from '@components/RecipeItem/RecipeItem'
 import Layout from '@components/Layout/Layout'
 
-interface IHomeProps {
+interface IRecipesPageProps {
   recipes: IRecipe[]
 }
 
-const Home = (props: IHomeProps) => {
+const RecipesPage = (props: IRecipesPageProps) => {
   console.log("props are ---> ", props)
   const { recipes } = props;
   return (
     <Layout>
-      <div>Home</div>
+      <div>Events</div>
       {recipes.map(recipe => (
         <RecipeItem key={recipe.id} recipe={recipe} />
 
       ))}
-
-      {recipes.length > 0 && (
-        <Link href='/recipes'>
-          <a className='btn-secondary'>
-            Vieiw All Events
-          </a>
-        </Link>
-      )}
     </Layout>
   )
 }
 
-export default Home
+export default RecipesPage
 
 export const getStaticProps: GetStaticProps = () => {
 
@@ -111,7 +102,7 @@ export const getStaticProps: GetStaticProps = () => {
 
 
   return {
-    props: { recipes: recipes.slice(0, 3) },
+    props: { recipes },
     revalidate: 60
   }
 }
